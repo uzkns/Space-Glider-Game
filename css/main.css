@@ -1,23 +1,50 @@
 body {
     padding: 0;
     margin: 0;
-    background: #f2f6e9;
   }
-  /*--- navigation bar ---*/
-  .navbar {
-    background:#6ab446;
+
+
+
+  #mainwindow {
+    height: 100vh;
+    max-height: 100vh;
   }
-  .nav-link,
-  .navbar-brand {
-    color: #fff;
-    cursor: pointer;
+  
+  #div1 {
+    z-index: 01;
   }
-  .nav-link {
-    margin-right: 1em !important;
+
+  #background {
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index: 10;
+    background-image: url("../res/bg/bg2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
   }
-  .nav-link:hover {
-    color: #000;
+
+  #gameArea {
+    position:absolute;
+    left:0px;
+    top:0px;
+    background-color: transparent;
+    z-index: 20;
   }
-  .navbar-collapse {
-    justify-content: flex-end;
-  }
+
+  /* #div2 {
+    margin: auto;
+    width: 50%;
+    z-index: 30;
+    background-color: rgba(24, 51, 66, 0.747);
+    border: 3px solid rgb(34, 34, 34); 
+  } */
+
+
+
+  
+
+
+  
+
+

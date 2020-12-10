@@ -7,34 +7,74 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
-<body onload="initalizeGame()" id="body1">
-<!---<nav class="navbar navbar-expand-md" id="nav1">
-        <a class="navbar-brand" href="#">Logo</a>
-        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main-navigation">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-          </ul>
+<body id="body1" onload="initalizeGame()">
+
+  <div id="mainwindow">
+        
+        <!-- <nav class="navbar navbar-expand-md" id="nav1">
+          <button type="button" onclick="registerMotionControls()" class="btn btn-dark">Activate Motion Controls</button>
+          <button type="button" onclick="registerMotionControls()" class="btn btn-dark">Calibrate motion sensor</button>
+          <button type="button" onclick="registerMotionControls()" class="btn btn-dark">Debug Mode on/off</button>
+        </nav> -->
+
+      <div id="div2">
+        <div class="modal fade" id="gameMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">SPACE GLIDER</h5>
+              </div>
+              <div class="modal-body">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-secondary">Keyboard</button>
+                  <button type="button" class="btn btn-secondary">Touch</button>
+                  <button type="button" class="btn btn-secondary">Motion</button>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Play</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </nav>
--->
-    
 
-    <header class="page-header header container-fluid">
-    </header>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
+        <!-- <nav class="list-group">  
+          <a class="list-group-item" href="#">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-secondary">Keyboard</button>
+              <button type="button" class="btn btn-secondary">Touch</button>
+              <button type="button" class="btn btn-secondary">Motion</button>
+            </div>
+          </a>
+            <a class="list-group-item" href="#">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary">Debug off</button>
+                <button type="button" class="btn btn-secondary">Debug on</button>
+              </div>
+            </a>
+            <a class="list-group-item" href="#">
+              <button type="button" class="btn btn-secondary">Calibrate motion sensor</button>
+            </a>
+        </nav> -->
+      </div>
+        <div id="div1"></div>
+        
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="res/frameworks/jquery-3.5.1-min/jquery-3.5.1.min.js"></script>
+  <script src="res/frameworks/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+  <!-- online copies of jQuery/Bootstrap
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  -->
 </body>
 </html>
