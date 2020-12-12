@@ -32,13 +32,9 @@ body {
     z-index: 20;
   }
 
-  /* #div2 {
-    margin: auto;
-    width: 50%;
-    z-index: 30;
-    background-color: rgba(24, 51, 66, 0.747);
-    border: 3px solid rgb(34, 34, 34); 
-  } */
+  .modal {
+    text-align: center;
+  }
 
 
 
