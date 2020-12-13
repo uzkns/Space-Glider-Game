@@ -83,7 +83,7 @@ function startGame() {
         registerKeyboard();
     }
 
-    if ($("#debug").hasClass("active")) {
+    if ($("#debug").prop("checked")) {
         _DEBUG = true;
         alert("Debug mode is ON!");
     } else {
@@ -100,6 +100,7 @@ function startGame() {
     var yposition = $(window).height() / 2;
     myGamePiece = new ship (width=24, height=16, x=xposition, y=yposition);
 
+    background.start();
     myGameArea.start();
 }
 
@@ -246,14 +247,20 @@ var background = {
         this.canvas.id = "background";
         var nav = document.getElementById("div1");
         nav.appendChild(this.canvas);
-        
+
         this.context = this.canvas.getContext("2d");
-        this.context.drawImage(backgroundImage, 0, 0, this.canvas.width, this.canvas.height);  
+        this.context.drawImage(backgroundImage, 0, 0, this.canvas.width, this.canvas.height);
+        //this.startResizeHandler();
     },
 
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.context.drawImage(backgroundImage, 0, 0, this.canvas.width, this.canvas.height);
+    },
+
+    // Starts the resize handler that redraws the background on every size change
+    startResizeHandler : function() {
+        $(window).resize(this.start());
     }
 }
 
@@ -276,7 +283,7 @@ var myGameArea = {
         nav.appendChild(this.canvas);
 
         // Set game loop every 30ms
-        this.updateInterval = setInterval(updateGameArea, 30);
+        this.updateInterval = setInterval(updateGameArea, 7);
     },
 
     clear : function() {
@@ -298,15 +305,15 @@ function ship (width, height, x, y) {
 
     //positive n moves down, negative n moves up
     this.move = function(n) {  
-      this.controlled = true; 
-      if (this.y < 1) {
-        this.y = 0;
-      } else if (this.y > (myGameArea.canvas.height - this.height)) {
-        this.y = myGameArea.canvas.height - this.height;
-      } else {
-        this.y = this.y + n;
-      }
-      this.controlled = false;
+        this.controlled = true; 
+        if (this.y < 1) {
+            this.y = 0;
+        } else if (this.y > (myGameArea.canvas.height - this.height)) {
+            this.y = myGameArea.canvas.height - this.height;
+        } else {
+            this.y = this.y + n;
+        }
+        this.controlled = false;
     }
 
     // Draw the ship image at the x,y coordinates
@@ -336,7 +343,7 @@ function ship (width, height, x, y) {
         var otherbottom = otherobj.y + (otherobj.height);
 
         if (_DEBUG == true) {
-          // In debug mode, never crash
+            // In debug mode, never crash
             var crash = false;
         } else {
             var crash = true;
