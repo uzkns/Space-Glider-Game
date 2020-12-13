@@ -283,7 +283,7 @@ var myGameArea = {
         nav.appendChild(this.canvas);
 
         // Set game loop every 30ms
-        this.updateInterval = setInterval(updateGameArea, 7);
+        this.updateInterval = setInterval(updateGameArea, 07);
     },
 
     clear : function() {
