@@ -239,10 +239,25 @@ function registerMotionControls() {
     }
 }
 
+// unregister motion controls between games
 function unregisterMotionControls() {
     straight = null;
 
     window.ondevicemotion = null;
+}
+
+// Request permissions to use motion controls (iOS13+ only)
+// See: https://github.com/mpetroff/pannellum/commit/1a7c71c062636359e1f0fe058257e1face16858c
+// Also see: https://www.w3.org/TR/orientation-event/
+function requestPermissions() {
+    if (typeof DeviceMotionEvent.requestPermission === "function") {
+        DeviceOrientationEvent.requestPermission().then(response => {
+            if (response != "granted") {
+                alert("Permission to use motion controls not granted! The game will not work with motion controls.");
+                return;
+            }
+        });
+    }
 }
 
 // returns true every n milli-seconds
