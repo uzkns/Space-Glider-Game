@@ -34,7 +34,7 @@
               Points will be rewarded for how far you come.<br><br>
 
               If you have a smart phone, motion controls will be used to control your space ship.<br>
-              <small>(If motion controls don't work, manually activate them in the settings)</small>
+              <small>(If motion controls don't work, open the settings)</small>
               <br><br>
               To end the game, press ESC at any time.<br>
               <small>(You will lose all your points when pressing ESC)</small>
@@ -73,6 +73,13 @@
               </div>
           </div>
           <br>
+          
+          Request motion control permissions:<br>
+          <small>(iOS/iPhone only)</small><br>
+
+          <button type="button" class="btn btn-secondary" onclick="requestPermissions()">Request permissions</button>
+          <br>
+          <br>
 
           Enable debug mode:<br>
 
@@ -82,12 +89,6 @@
               Debug mode
             </label>
           </div>
-          <br>
-
-          Request motion control permissions (iOS/iPhone only):<br>
-
-          <button type="button" class="btn btn-secondary btn-lg" onclick="requestPermissions()">Request permissions</button>
-
         </div>
       </div>
     </div> 

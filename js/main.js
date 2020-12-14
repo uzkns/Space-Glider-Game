@@ -250,13 +250,18 @@ function unregisterMotionControls() {
 // See: https://github.com/mpetroff/pannellum/commit/1a7c71c062636359e1f0fe058257e1face16858c
 // Also see: https://www.w3.org/TR/orientation-event/
 function requestPermissions() {
+    console.log("Requesting permissions");
     if (typeof DeviceMotionEvent.requestPermission === "function") {
         DeviceOrientationEvent.requestPermission().then(response => {
             if (response != "granted") {
                 alert("Permission to use motion controls not granted! The game will not work with motion controls.");
                 return;
+            } else {
+                console.log("Permissions granted.");
             }
         });
+    } else {
+        console.log("Requesting permissions not needed nor possible. (Probably not an iOS13+ device)");
     }
 }
 
