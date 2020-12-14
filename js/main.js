@@ -112,7 +112,9 @@ function updateGameArea() {
     // check if the player has crashed with any obstacles
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
+            unregisterMotionControls();
             initalizeGame(Math.floor(myGameArea.frameNo / 100));
+            return;
         } 
     }
     myGameArea.clear();
@@ -120,12 +122,20 @@ function updateGameArea() {
 
     // every 300ms, create a new obstacle
     if (myGameArea.frameNo == 1 || everyinterval(300)) {
+        
         y = myGameArea.canvas.height;
         x = myGameArea.canvas.width;
         
         // select a random height for the gap
-        minHeight = 20;
-        maxHeight = y - 200;
+        if (myObstacles.empty) {
+            oldHeight = myObstacles[myObstacles.length - 1].height;
+            minHeight = oldHeight - 100;
+            maxHeight = oldHeight + 200;
+        } else {
+            minHeight = 20;
+            maxHeight = y - 200;
+        }    
+        
         height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
         
         // select a random size of the gap
@@ -195,6 +205,15 @@ function registerKeyboard() {
 function registerMotionControls() {
     straight = null;
 
+    if (typeof DeviceMotionEvent.requestPermission === "function") {
+        DeviceOrientationEvent.requestPermission().then(response => {
+            if (response != "granted") {
+                alert("Permission to use motion controls not granted! The game will not work with motion controls");
+                return;
+            }
+        });
+    }
+
     // Register event handler
     window.ondevicemotion = function(event) {
         //we are only interested in the y motion
@@ -207,17 +226,23 @@ function registerMotionControls() {
             if (_DEBUG) {
               // display debug text when it is selected in settings
                 debugText.text = "Y: " + Math.floor(ymotion - straight);
-                debugText.update();
+                debugText.redraw();
             }
 
             // move ship up / down
             if (Math.floor(ymotion - straight) < 0) {
-                myGamePiece.move(-1);
+                myGamePiece.move(ymotion - straight);
             } else if (Math.floor(ymotion - straight) > 0) {
-                myGamePiece.move(1);
+                myGamePiece.move(ymotion - straight);
             }
-        }       
+        }
     }
+}
+
+function unregisterMotionControls() {
+    straight = null;
+
+    window.ondevicemotion = null;
 }
 
 // returns true every n milli-seconds
@@ -306,7 +331,7 @@ function ship (width, height, x, y) {
     //positive n moves down, negative n moves up
     this.move = function(n) {  
         this.controlled = true; 
-        if (this.y < 1) {
+        if (this.y < 0) {
             this.y = 0;
         } else if (this.y > (myGameArea.canvas.height - this.height)) {
             this.y = myGameArea.canvas.height - this.height;
